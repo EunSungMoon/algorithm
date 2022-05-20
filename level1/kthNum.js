@@ -6,11 +6,16 @@ function solution(array, commands) {
 }
 
 function solution(array, commands) {
-  return commands.map(
-    ([from, to, k]) =>
-      array.slice(from - 1, to).sort((a, b) => a - b)[k - 1],
-  );
+  return commands.map(command => {
+    const [sPosition, ePosition, position] = command
+    const newArray = array
+      .filter((value, fIndex) => fIndex >= sPosition - 1 && fIndex <= ePosition - 1)
+      .sort((a, b) => a - b)
+
+    return newArray[position - 1]
+  })
 }
+
 
 // [1, 5, 2, 6, 3, 7, 4]	[[2, 5, 3], [4, 4, 1], [1, 7, 3]]	[5, 6, 3]
 
@@ -31,5 +36,4 @@ to는 to까지 포함되서 끊어지니까 -1할 필요가 없다
 
 
 k-1을 해주는 이유는 배열은 0부터 시작 k번째가 배열에서는 k-1을 해줘야 됨
-
 */
