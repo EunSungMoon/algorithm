@@ -25,10 +25,6 @@ function solution(n, lost, reserve) {
   return answer;
 }
 
-solution(4, [2,4], [])
-
-
-
 /*
 n: 전체 학생수
 lost : 체육복을 도난당한 학생들의 번호가 담긴 배열
