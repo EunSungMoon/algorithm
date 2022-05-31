@@ -22,4 +22,9 @@ indexOf : 배열에서 지정된 요소를 찾을 수 있는 첫번째 인덱스
 Math.min() : 주어진 숫자들 중 가장 작은 값을 반환 
 split(구분자) : 구분자를 중심으로 문자열을 쪼개줌
 join(구분자) : split와 반대 역할 함 구분자를 기준으로 문자열을 합쳐줌
+
+map : 요소 대신 새로운 값을 반환
+ex. 
+let lengths = ["Bilbo", "Gandalf", "Nazgul"].map(item => item.length);
+alert(lengths); // 5,7,6
 */
