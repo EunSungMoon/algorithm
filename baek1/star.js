@@ -5,4 +5,10 @@ function solution(a) {
     console.log(star);
   }
 }
-solution(5)
+
+function solution1(a){
+  for (let i = 1; i <=a; i++) {
+    console.log(" ".repeat(a-i)+"*".repeat(i))
+  }
+}
+solution1(5)
