@@ -1,6 +1,6 @@
-function solution(input){
-  let [cost, num, money]=input.toString().trim().split(' ');
-  let answer=cost*num-money
+function solution(input) {
+  let [cost, num, money] = input.toString().trim().split(' ');
+  let answer = cost * num - money
   console.log(answer);
 }
 
