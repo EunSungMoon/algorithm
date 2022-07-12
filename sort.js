@@ -1,4 +1,10 @@
 //삽입정렬
+/*
+장점 : 메모리가 절약된다
+단점 : 자료의 개수가 많아질수록 성능이 떨어짐
+stable 정렬 : 중복된 데이터는 위치 교환하지 않음
+=> 중복데이터가 있는 경우 기존 중복 데이터의 순서가 정렬이 다 끝난 이후에도 유지되는 정렬
+*/
 function insertSort(arr) {
   let len = arr.length;
   let temp, inner;
@@ -31,9 +37,14 @@ function insertSort(arr) {
   }
   console.log(arr);
 }
-insertSort([2, 10, 5, 3, 6, 8, 4, 1, 7, 9])
+// insertSort([2, 10, 5, 3, 6, 8, 4, 1, 7, 9])
 
 //버블정렬
+/*
+  장점 : 메모리 절약, 구현 쉽다. 
+  단점 : 자료가 많아질수록 성능이 떨어짐.
+  stable 정렬 : 중복된 데이터는 위치 교환하지 않음
+*/
 function bubbleSort(array) {
   //배열의 길이만큼 for문을 돌리고
   for (let i = 0; i < array.length; i++) {
@@ -54,4 +65,29 @@ function bubbleSort(array) {
   }
   console.log(array);
 }
-bubbleSort([5, 4, 3, 2, 1])
+// bubbleSort([5, 4, 3, 2, 1])
+
+//선택 정렬
+/*
+  장점 : 메모리 절약
+  단점 : 최선의 경우에도 최악의 경우에도 O(n^2)의 시간이 걸리는 만큼 성능이 떨어짐
+  unstable 정렬 : 데이터가 중복된 경우 위치가 바뀔 수 있다
+*/
+function selectionSort(arr) {
+  let len = arr.length;
+  let minIndex, temp;
+  for (let i = 0; i < len; i++) {
+    minIndex = i;
+    for (let j = i + 1; j < len; j++) {
+      if (arr[j] < arr[minIndex]) {
+        minIndex = j;
+      }
+    } 
+    temp = arr[minIndex];
+    arr[minIndex] = arr[i]
+    arr[i] = temp;
+    // console.log(`${i}회전: ${arr}`);
+  }
+  console.log(arr);
+}
+selectionSort([5, 4, 3, 2, 1])
