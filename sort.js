@@ -72,6 +72,12 @@ function bubbleSort(array) {
   장점 : 메모리 절약
   단점 : 최선의 경우에도 최악의 경우에도 O(n^2)의 시간이 걸리는 만큼 성능이 떨어짐
   unstable 정렬 : 데이터가 중복된 경우 위치가 바뀔 수 있다
+
+  리스트에서 최소값을 찾는다
+  그 값을 맨 앞에 위치한 값과 바꾼다
+  맨앞을 제외하고 다시 순회해서 최소값을 찾는다
+  그값을 다시 맨앞이랑 바꿈
+  반복
 */
 function selectionSort(arr) {
   let len = arr.length;
