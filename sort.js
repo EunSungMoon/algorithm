@@ -88,8 +88,8 @@ function selectionSort(arr) {
       if (arr[j] < arr[minIndex]) {
         minIndex = j;
       }
-    } 
-    if(minIndex!==i){
+    }
+    if (minIndex !== i) {
       temp = arr[minIndex];
       arr[minIndex] = arr[i]
       arr[i] = temp;
@@ -98,4 +98,70 @@ function selectionSort(arr) {
   }
   console.log(arr);
 }
-selectionSort([5, 4, 3, 2, 1])
+// selectionSort([5, 4, 3, 2, 1])
+
+//병합 정렬
+/*
+데이터들을 쪼갠 후 하나로 합치는 과정에서 정렬
+장점 : 최악의 경우에도 O(nlog₂n)의 시간이 소요, 데이터 분포에 영향을 덜 받는다. 좋은 성능
+단점 : 별도의 메모리 공간이 필요
+stable 정렬 : 중복 시 데이터 순서 안바뀜
+*/
+function mergeSort(array) {
+  if (array.length < 2) {
+    return array;
+  }
+
+  const mid = Math.floor(array.length / 2);
+  const left = array.slice(0, mid);
+  const right = array.slice(mid);
+  // console.log(`left ${left}`);
+  // console.log(`right ${right}`);
+
+  return merge(mergeSort(left), mergeSort(right));
+
+  function merge(left, right) {
+    const resultArray = [];
+    let leftIndex = 0;
+    let rightIndex = 0;
+
+    while (leftIndex < left.length && rightIndex < right.length) {
+      if (left[leftIndex] < right[rightIndex]) {
+        resultArray.push(left[leftIndex]); leftIndex++;
+      } else {
+        resultArray.push(right[rightIndex]); rightIndex++;
+      }
+    }
+    return resultArray.concat(left.slice(leftIndex), right.slice(rightIndex));
+  }
+}
+
+console.log(mergeSort([5, 4, 3, 2, 1]));
+
+//퀵 정렬
+/*
+기준 원소를 고른다. 배열의 첫번째 원소
+배열을 기준 원소보다 작은 원소의 배열과 큰 원소배열 => 2개의 하위배열로 분할
+하위배열에 대해 재귀적으로 퀵 정렬을 호출한다
+
+*/
+function quickSort(array) {
+  if (array.length < 2) {
+    return array;
+  }
+  const pivot = [array[0]];
+  const left = []; const right = [];
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] < pivot) {
+      left.push(array[i]);
+    } else if (array[i] > pivot) {
+      right.push(array[i]);
+    } else {
+      pivot.push(array[i]);
+    }
+  }
+  console.log(`left: ${left}, pivot: ${pivot}, right: ${right}`);
+  return quickSort(left).concat(pivot, quickSort(right));
+}
+const sorted = quickSort([5, 3, 7, 1, 9]);
+console.log(sorted);
