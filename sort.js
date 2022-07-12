@@ -83,10 +83,12 @@ function selectionSort(arr) {
         minIndex = j;
       }
     } 
-    temp = arr[minIndex];
-    arr[minIndex] = arr[i]
-    arr[i] = temp;
-    // console.log(`${i}회전: ${arr}`);
+    if(minIndex!==i){
+      temp = arr[minIndex];
+      arr[minIndex] = arr[i]
+      arr[i] = temp;
+      console.log(`${i}회전: ${arr}`);
+    }
   }
   console.log(arr);
 }
