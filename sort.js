@@ -20,7 +20,7 @@ function insertionSort(array) {
   return array;
 }
 
-insertionSort([5, 4, 3, 2, 1])
+// insertionSort([5, 4, 3, 2, 1])
 
 //버블정렬
 /*
@@ -30,7 +30,7 @@ insertionSort([5, 4, 3, 2, 1])
 */
 function bubbleSort(array) {
   //배열의 길이만큼 for문을 돌리고
-  for (let i = 0; i < array.length; i++) {
+  for (let i = 0; i < array.length; i++) {                                       
     let swap;
     // 가장 큰 수를 배열의 마지막까지 swap을 시킨 후 
     // 마지막 요소는 없애기 위해 배열의 길이를 -1해줌
@@ -48,7 +48,7 @@ function bubbleSort(array) {
   }
   console.log(array);
 }
-// bubbleSort([5, 4, 3, 2, 1])
+bubbleSort([5, 4, 3, 2, 1])
 
 //선택 정렬
 /*
@@ -63,25 +63,26 @@ function bubbleSort(array) {
   반복
 */
 function selectionSort(arr) {
-  let len = arr.length;
   let minIndex, temp;
-  for (let i = 0; i < len; i++) {
+  for (let i = 0; i < arr.length; i++) {
     minIndex = i;
-    for (let j = i + 1; j < len; j++) {
+    for (let j = i + 1; j < arr.length; j++) {
       if (arr[j] < arr[minIndex]) {
         minIndex = j;
       }
     }
+    console.log(minIndex);
     if (minIndex !== i) {
       temp = arr[minIndex];
       arr[minIndex] = arr[i]
       arr[i] = temp;
-      console.log(`${i}회전: ${arr}`);
+      // console.log(`${i}회전: ${arr}`);
     }
   }
   console.log(arr);
 }
 // selectionSort([5, 4, 3, 2, 1])
+
 
 //병합 정렬
 /*
@@ -107,14 +108,22 @@ function mergeSort(array) {
     const resultArray = [];
     let leftIndex = 0;
     let rightIndex = 0;
+    // console.log(`left ${left}`);
+    // console.log(`right ${right}`);
 
     while (leftIndex < left.length && rightIndex < right.length) {
       if (left[leftIndex] < right[rightIndex]) {
-        resultArray.push(left[leftIndex]); leftIndex++;
+        resultArray.push(left[leftIndex]);
+
+
+        leftIndex++;
       } else {
-        resultArray.push(right[rightIndex]); rightIndex++;
+        resultArray.push(right[rightIndex]);
+        // console.log(resultArray);
+        rightIndex++;
       }
     }
+    // console.log(resultArray.concat(left.slice(leftIndex), right.slice(rightIndex)));
     return resultArray.concat(left.slice(leftIndex), right.slice(rightIndex));
   }
 }
@@ -134,17 +143,20 @@ function quickSort(array) {
   }
   const pivot = [array[0]];
   const left = []; const right = [];
+
   for (let i = 1; i < array.length; i++) {
     if (array[i] < pivot) {
       left.push(array[i]);
+      console.log('left' +left);
     } else if (array[i] > pivot) {
       right.push(array[i]);
+      console.log('right' +right);
     } else {
       pivot.push(array[i]);
     }
   }
-  console.log(`left: ${left}, pivot: ${pivot}, right: ${right}`);
+  // console.log(`left: ${left}, pivot: ${pivot}, right: ${right}`);
   return quickSort(left).concat(pivot, quickSort(right));
 }
-// const sorted = quickSort([5, 3, 7, 1, 9]);
+// const sorted = quickSort([5, 4, 3, 2, 1]);
 // console.log(sorted);
