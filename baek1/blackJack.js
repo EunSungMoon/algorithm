@@ -28,7 +28,6 @@ function solution(nums) {
         sol(last - 1, i)
         picked[i] = false
         sum -= cards[i]
-        console.log(sum);
       }
     }
   }
